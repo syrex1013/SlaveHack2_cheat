@@ -12,8 +12,8 @@ import random
 import requests
 import json
 options = Options()
-options.add_argument("user-data-dir=C:\\Users\\SkinExpert\\AppData\\Local\\Google\\Chrome\\User Data\\Default");
-browser = webdriver.Chrome("C:\\Users\\SkinExpert\\Desktop\\bot\\chromedriver\\chromedriver.exe",chrome_options=options)
+options.add_argument("user-data-dir=data-dir");
+browser = webdriver.Chrome("chromedriver-dir",chrome_options=options)
 browser.get('https://www.slavehack2.com/')
 wait = WebDriverWait(browser, 5)
 npc_list = []
