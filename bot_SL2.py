@@ -19,14 +19,6 @@ wait = WebDriverWait(browser, 5)
 npc_list = []
 players_list = []
 new_players = []
-def bot_sendtext(bot_message):
-	
-	### Send text message
-	bot_token = ''
-	bot_chatID = '443032595'
-	send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
-
-	requests.get(send_text)
 def scrape_ip_on(ip):
     element1 = browser.find_element_by_xpath('//*[@id="icon-terminal"]')
     element1.click()
@@ -84,7 +76,6 @@ def scrape_ip_on(ip):
     element2.send_keys(Keys.ENTER)
     hackip(new_ips)
 def do_mission_medium(loop_times):
-    bot_sendtext("Started doing mission medium")
     element1 = browser.find_element_by_xpath('//*[@id="icon-terminal"]')
     element1.click()
     element3 = browser.find_element_by_xpath('//*[@id="icon-logs"]')
@@ -236,10 +227,8 @@ def do_mission_medium(loop_times):
         time.sleep(4)
         delete_logs(1)
         time.sleep(2)
-        bot_sendtext("Done mission "+str(x)+"/"+str(loop_times))
         time.sleep(5)
 def do_mission_easy(loop_times):
-    bot_sendtext("Started doing mission easy")
     element1 = browser.find_element_by_xpath('//*[@id="icon-terminal"]')
     element1.click()
     element3 = browser.find_element_by_xpath('//*[@id="icon-logs"]')
@@ -304,7 +293,6 @@ def do_mission_easy(loop_times):
         element17 = browser.find_element_by_xpath('//*[@id="body-missions"]/table/tbody/tr/td[1]/div/button[1]')
         element17.click()
         time.sleep(2)
-        bot_sendtext("Done mission "+str(x)+"/"+str(loop_times))
 def wait_for_login():
     timeout = 5
     while True:
@@ -414,7 +402,6 @@ def runcommand(command,list_of_targets,count):
         element4.send_keys(Keys.ENTER)
         time.sleep(2)
 def mine(list_of_targets,count):
-    bot_sendtext("Started collecting")
     myarray = np.asarray(list_of_targets)
     for x in range(len(list_of_targets)):
         element1 = browser.find_element_by_xpath('//*[@id="icon-terminal"]')
@@ -442,7 +429,6 @@ def mine(list_of_targets,count):
         element2.send_keys(Keys.ENTER)
         time.sleep(1) #log sleep time
     print("All hosts mined")
-    bot_sendtext("Done collecting")
 def turnon(count):
     element11 = browser.find_element_by_xpath('//*[@id="icon-start"]')
     element11.click()
@@ -459,7 +445,6 @@ def turnon(count):
             print("All npc running "+ element.get_attribute('innerHTML'))
             break;
 def ip_ninja(list_of_targets):
-    bot_sendtext("Started ip ninja")
     myarray = np.asarray(list_of_targets)
     for x in range(len(list_of_targets)):
         element1 = browser.find_element_by_xpath('//*[@id="icon-terminal"]')
@@ -485,7 +470,6 @@ def ip_ninja(list_of_targets):
                     element.click()
                     if element.get_attribute('innerHTML') not in new_players:
                         print("Found new ip: "+element.get_attribute('innerHTML'))
-                        bot_sendtext("Found new ip!")
                         new_players.append(element.get_attribute('innerHTML'))              
                     delete_logs(1)
                     count +=1
@@ -518,7 +502,6 @@ def try_to_find_ip():
     print("Finished getting ips")
         
 def hackip(ip_list):
-        bot_sendtext("Started hacking ips")
         myarray = np.asarray(ip_list)
         for x in range(len(myarray)):
             element1 = browser.find_element_by_xpath('//*[@id="icon-terminal"]')
@@ -542,7 +525,6 @@ def hackip(ip_list):
             time.sleep(2) #log sleep time
             element2.send_keys("exit")
             element2.send_keys(Keys.ENTER)
-        bot_sendtext("All ips hacked")
 wait_for_login()
 print("LOGGED")
 time.sleep(30)
